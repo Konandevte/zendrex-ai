@@ -207,11 +207,55 @@
 
     input.addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
-        sendMessage();
+        async function sendMessage() {
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  welcome.style.display = "none";
+
+  const userMessage = document.createElement("div");
+  userMessage.className = "message user";
+  userMessage.textContent = text;
+
+  chat.appendChild(userMessage);
+
+  input.value = "";
+
+  const aiMessage = document.createElement("div");
+  aiMessage.className = "message ai";
+  aiMessage.textContent = "Thinking...";
+
+  chat.appendChild(aiMessage);
+
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+
+    const response = await fetch(
+      "https://steep-fog-986f.konanwork99.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          prompt: text
+        })
       }
-    });
+    );
 
-  </script>
+    const data = await response.json();
 
-</body>
-</html>
+    aiMessage.textContent = data.answer || "No answer received.";
+
+  } catch (error) {
+
+    aiMessage.textContent =
+      "Sorry, Zendrex AI could not connect.";
+
+  }
+
+  chat.scrollTop = chat.scrollHeight;
+}

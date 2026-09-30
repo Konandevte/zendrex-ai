@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Zendrex AI</title>
 
   <style>
@@ -13,37 +14,60 @@
     }
 
     :root {
-      --bg: #050812;
-      --panel: rgba(10, 16, 30, 0.88);
-      --panel-2: rgba(15, 23, 42, 0.9);
-      --border: rgba(120, 150, 200, 0.16);
-      --text: #f4f7ff;
-      --muted: #8d9ab3;
-      --accent: #28a9ff;
-      --accent-2: #00e5ff;
-      --user: #16243b;
-      --danger: #ff4d67;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      --bg: #f2f7fc;
+      --panel: rgba(255,255,255,.92);
+      --panel-solid: #ffffff;
+      --border: rgba(20,50,80,.12);
+      --text: #172033;
+      --muted: #718096;
+      --accent: #129ee8;
+      --accent2: #00c7ef;
+      --user: #e3f2ff;
+      --danger: #ef4056;
+      --shadow: 0 15px 45px rgba(25,65,100,.12);
     }
 
-    body.light {
-      --bg: #eef3f9;
-      --panel: rgba(255, 255, 255, 0.9);
-      --panel-2: #ffffff;
-      --border: rgba(20, 40, 70, 0.12);
-      --text: #111827;
-      --muted: #667085;
-      --user: #e5f2ff;
-      --shadow: 0 20px 50px rgba(30, 60, 100, 0.15);
+    body.dark {
+      --bg: #050912;
+      --panel: rgba(10,17,30,.92);
+      --panel-solid: #0c1422;
+      --border: rgba(150,180,220,.13);
+      --text: #f4f8ff;
+      --muted: #8e9bb2;
+      --user: #14263d;
+      --shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
     }
 
     body {
-      min-height: 100vh;
-      font-family: Inter, Arial, sans-serif;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
       background:
-        radial-gradient(circle at 20% 10%, rgba(0, 174, 255, 0.12), transparent 28%),
-        radial-gradient(circle at 80% 90%, rgba(0, 229, 255, 0.08), transparent 30%),
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(0,190,255,.12),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 90%,
+          rgba(0,120,255,.08),
+          transparent 30%
+        ),
         var(--bg);
+
       color: var(--text);
       overflow: hidden;
     }
@@ -57,70 +81,101 @@
       cursor: pointer;
     }
 
+    /* =====================================
+       APP
+    ===================================== */
+
     .app {
       display: flex;
-      height: 100vh;
       width: 100%;
+      height: 100vh;
     }
 
-    /* SIDEBAR */
+    /* =====================================
+       SIDEBAR
+    ===================================== */
 
     .sidebar {
-      width: 270px;
-      border-right: 1px solid var(--border);
-      background: var(--panel);
-      backdrop-filter: blur(20px);
-      padding: 18px;
+      width: 260px;
+      min-width: 260px;
+
       display: flex;
       flex-direction: column;
-      gap: 18px;
+
+      padding: 18px;
+
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+
+      border-right: 1px solid var(--border);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 5px;
+      gap: 11px;
+
+      margin-bottom: 20px;
     }
 
     .brand img {
       width: 48px;
       height: 48px;
+
       object-fit: contain;
-      border-radius: 14px;
+      border-radius: 13px;
     }
 
-    .brand-text {
+    .brand-name {
       font-size: 21px;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: -.4px;
     }
 
-    .brand-text span {
-      color: var(--accent-2);
+    .brand-name span {
+      color: var(--accent2);
     }
 
     .new-chat {
       width: 100%;
+
       padding: 13px 15px;
-      border: 1px solid rgba(40, 169, 255, 0.35);
+
+      border: none;
       border-radius: 13px;
-      background: linear-gradient(135deg, #1289dc, #00bde9);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+
       color: white;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(0, 174, 255, 0.15);
+      font-weight: 750;
+
+      box-shadow:
+        0 10px 25px rgba(0,160,230,.2);
+
+      transition: .2s;
     }
 
     .new-chat:hover {
-      filter: brightness(1.08);
+      transform: translateY(-1px);
+      filter: brightness(1.05);
     }
 
     .sidebar-title {
+      margin-top: 25px;
+      margin-bottom: 9px;
+
       color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
+
+      font-size: 11px;
+      font-weight: 800;
+
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .quick-list {
@@ -132,52 +187,91 @@
     .quick-btn,
     .side-btn {
       width: 100%;
+
+      padding: 10px 12px;
+
       border: 1px solid var(--border);
+      border-radius: 11px;
+
       background: transparent;
       color: var(--text);
-      border-radius: 11px;
-      padding: 10px 12px;
+
       text-align: left;
-      transition: 0.2s;
+
+      transition: .2s;
     }
 
     .quick-btn:hover,
     .side-btn:hover {
-      background: rgba(40, 169, 255, 0.08);
-      border-color: rgba(40, 169, 255, 0.3);
+      background: rgba(0,170,240,.08);
+      border-color: rgba(0,170,240,.28);
+      transform: translateX(2px);
+    }
+
+    .quick-btn {
+      animation: promptIn .18s ease;
+    }
+
+    @keyframes promptIn {
+      from {
+        opacity: 0;
+        transform: translateX(-5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .sidebar-bottom {
       margin-top: auto;
+
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    /* MAIN */
+    /* =====================================
+       MAIN
+    ===================================== */
 
     .main {
+      position: relative;
+
       flex: 1;
+      min-width: 0;
+      height: 100vh;
+
       display: flex;
       flex-direction: column;
-      min-width: 0;
     }
 
+    /* =====================================
+       TOP BAR
+    ===================================== */
+
     .topbar {
-      height: 70px;
-      border-bottom: 1px solid var(--border);
-      background: var(--panel);
-      backdrop-filter: blur(20px);
+      height: 68px;
+      min-height: 68px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 22px;
+
+      padding: 0 20px;
+
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid var(--border);
     }
 
     .status {
       display: flex;
       align-items: center;
       gap: 9px;
+
       color: var(--muted);
       font-size: 13px;
     }
@@ -185,112 +279,154 @@
     .status-dot {
       width: 9px;
       height: 9px;
-      border-radius: 50%;
-      background: #27e58b;
-      box-shadow: 0 0 12px #27e58b;
-    }
 
-    .top-actions {
-      display: flex;
-      gap: 8px;
+      border-radius: 50%;
+
+      background: #24df87;
+
+      box-shadow:
+        0 0 12px rgba(36,223,135,.8);
     }
 
     .icon-btn {
       width: 40px;
       height: 40px;
+
       border: 1px solid var(--border);
+      border-radius: 11px;
+
       background: transparent;
       color: var(--text);
-      border-radius: 11px;
-      font-size: 17px;
+
+      transition: .2s;
     }
 
     .icon-btn:hover {
-      background: rgba(40, 169, 255, 0.08);
+      background: rgba(0,170,240,.08);
     }
 
-    /* CHAT */
+    /* =====================================
+       CHAT
+    ===================================== */
 
     .chat {
       flex: 1;
+
       overflow-y: auto;
-      padding: 28px 20px 150px;
+      overflow-x: hidden;
+
+      padding: 25px 20px 160px;
+
       scroll-behavior: smooth;
     }
 
     .chat-inner {
       width: min(900px, 100%);
-      margin: auto;
+      margin: 0 auto;
     }
 
+    /* =====================================
+       WELCOME
+    ===================================== */
+
     .welcome {
-      min-height: 65vh;
+      min-height: 70vh;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       text-align: center;
-      padding: 30px;
+
+      padding: 30px 15px;
     }
 
     .welcome-logo {
-      width: 130px;
-      height: 130px;
+      width: 125px;
+      height: 125px;
+
       object-fit: contain;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 0 25px rgba(0, 210, 255, 0.25));
+
+      margin-bottom: 14px;
+
+      filter:
+        drop-shadow(
+          0 0 25px rgba(0,200,255,.25)
+        );
     }
 
     .welcome h1 {
-      font-size: clamp(32px, 6vw, 55px);
+      font-size: clamp(32px,6vw,54px);
+      letter-spacing: -1.5px;
+
       margin-bottom: 10px;
-      letter-spacing: -1px;
     }
 
     .welcome h1 span {
-      color: var(--accent-2);
+      color: var(--accent2);
     }
 
     .welcome p {
+      max-width: 600px;
+
       color: var(--muted);
-      max-width: 580px;
+
       line-height: 1.6;
     }
 
     .prompt-grid {
-      width: min(700px, 100%);
-      margin-top: 28px;
+      width: min(700px,100%);
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2,1fr);
+
       gap: 10px;
+
+      margin-top: 28px;
     }
 
     .prompt-card {
       padding: 15px;
+
       border: 1px solid var(--border);
-      background: var(--panel);
       border-radius: 14px;
+
+      background: var(--panel);
       color: var(--text);
+
       text-align: left;
-      transition: 0.2s;
+
+      transition: .2s;
     }
 
     .prompt-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(0, 229, 255, 0.3);
-      background: var(--panel-2);
+
+      border-color:
+        rgba(0,200,255,.3);
+
+      background: var(--panel-solid);
     }
 
-    /* MESSAGES */
+    /* =====================================
+       MESSAGES
+    ===================================== */
 
     .message {
+      width: 100%;
+
       display: flex;
-      margin: 20px 0;
-      gap: 12px;
-      animation: appear 0.2s ease;
+      align-items: flex-start;
+
+      gap: 10px;
+
+      margin: 18px 0;
+
+      animation: messageIn .18s ease;
     }
 
-    @keyframes appear {
+    @keyframes messageIn {
       from {
         opacity: 0;
         transform: translateY(5px);
@@ -306,82 +442,147 @@
       justify-content: flex-end;
     }
 
+    .message-content {
+      min-width: 0;
+      max-width: 82%;
+    }
+
+    .message.user .message-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      max-width: 82%;
+    }
+
     .avatar {
       width: 34px;
       height: 34px;
+
       min-width: 34px;
-      border-radius: 10px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       overflow: hidden;
-      background: var(--panel-2);
+
       border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background: var(--panel-solid);
     }
 
     .avatar img {
       width: 100%;
       height: 100%;
+
       object-fit: contain;
     }
 
     .bubble {
-      max-width: min(760px, 85%);
-      padding: 14px 16px;
+      display: block;
+
+      width: fit-content;
+      max-width: 100%;
+
+      padding: 12px 15px;
+
       border-radius: 16px;
+
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.55;
+
       white-space: pre-wrap;
-      word-break: break-word;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+
+      overflow-wrap: break-word;
+      word-break: normal;
+
+      text-align: left;
     }
 
     .assistant .bubble {
       background: var(--panel);
+
       border: 1px solid var(--border);
+
       border-top-left-radius: 5px;
+
+      box-shadow:
+        0 5px 22px rgba(0,0,0,.05);
     }
 
     .user .bubble {
       background: var(--user);
+
       border: 1px solid var(--border);
+
       border-top-right-radius: 5px;
+
+      /*
+        Important:
+        prevents "hru" or "hr u"
+        from breaking into separate lines.
+      */
+      min-width: max-content;
+
+      max-width: min(760px,82vw);
     }
 
     .message-tools {
       display: flex;
       gap: 6px;
-      margin-top: 8px;
+
+      margin-top: 7px;
     }
 
     .copy-btn {
+      padding: 5px 9px;
+
       border: 1px solid var(--border);
+      border-radius: 8px;
+
       background: transparent;
       color: var(--muted);
-      border-radius: 8px;
-      padding: 5px 9px;
+
       font-size: 12px;
     }
 
     .copy-btn:hover {
+      background: rgba(0,170,240,.08);
       color: var(--text);
-      background: rgba(40, 169, 255, 0.08);
     }
 
-    /* CODE */
+    /* =====================================
+       CODE
+    ===================================== */
 
     pre {
       position: relative;
+
+      width: min(100%,760px);
+
       margin: 12px 0;
-      padding: 15px;
-      padding-top: 42px;
+
+      padding: 42px 15px 15px;
+
       overflow-x: auto;
+
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 12px;
-      background: #05070c;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-family: Consolas, monospace;
+
+      background: #05070b;
+      color: #e9f3ff;
+
+      font-family:
+        Consolas,
+        Monaco,
+        monospace;
+
       font-size: 14px;
       line-height: 1.55;
+
+      white-space: pre;
     }
 
     .code-copy {
@@ -391,37 +592,47 @@
     }
 
     code {
-      font-family: Consolas, monospace;
+      font-family:
+        Consolas,
+        Monaco,
+        monospace;
     }
 
-    /* TYPING */
+    /* =====================================
+       TYPING
+    ===================================== */
 
     .typing {
       display: flex;
       align-items: center;
+
       gap: 5px;
-      padding: 8px 2px;
+
+      padding: 5px 2px;
     }
 
     .typing span {
       width: 7px;
       height: 7px;
+
       border-radius: 50%;
-      background: var(--accent-2);
+
+      background: var(--accent2);
+
       animation: typing 1s infinite;
     }
 
     .typing span:nth-child(2) {
-      animation-delay: 0.15s;
+      animation-delay: .15s;
     }
 
     .typing span:nth-child(3) {
-      animation-delay: 0.3s;
+      animation-delay: .3s;
     }
 
     @keyframes typing {
-      0%, 60%, 100% {
-        opacity: 0.25;
+      0%,60%,100% {
+        opacity: .25;
         transform: translateY(0);
       }
 
@@ -431,48 +642,76 @@
       }
     }
 
-    /* INPUT */
+    /* =====================================
+       INPUT
+    ===================================== */
 
     .input-area {
-      position: fixed;
-      bottom: 0;
+      position: absolute;
+
+      left: 0;
       right: 0;
-      left: 270px;
-      padding: 18px 20px 20px;
-      background: linear-gradient(
-        to top,
-        var(--bg) 60%,
-        transparent
-      );
+      bottom: 0;
+
+      z-index: 20;
+
+      padding: 15px 20px 19px;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to top,
+          var(--bg) 55%,
+          transparent
+        );
     }
 
     .input-box {
-      width: min(900px, 100%);
-      margin: auto;
+      width: min(900px,100%);
+
+      margin: 0 auto;
+
+      pointer-events: auto;
+
+      padding: 9px;
+
       border: 1px solid var(--border);
-      background: var(--panel);
-      backdrop-filter: blur(20px);
       border-radius: 18px;
+
+      background: var(--panel);
+
+      backdrop-filter: blur(20px);
+
       box-shadow: var(--shadow);
-      padding: 10px;
     }
 
     .input-row {
       display: flex;
-      gap: 8px;
       align-items: flex-end;
+
+      gap: 8px;
     }
 
     textarea {
       flex: 1;
+
+      width: 100%;
+      min-width: 0;
+
       min-height: 46px;
       max-height: 180px;
+
       resize: none;
+
       border: none;
       outline: none;
+
       background: transparent;
       color: var(--text);
+
       padding: 11px 10px;
+
       font-size: 16px;
       line-height: 1.5;
     }
@@ -481,44 +720,60 @@
       color: var(--muted);
     }
 
+    textarea:disabled {
+      opacity: .7;
+    }
+
     .send-btn,
     .stop-btn {
+      width: 46px;
       height: 46px;
+
       min-width: 46px;
+
       border: none;
       border-radius: 12px;
+
       color: white;
+
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .send-btn {
-      background: linear-gradient(135deg, #1289dc, #00c9ef);
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
     }
 
     .stop-btn {
-      background: var(--danger);
       display: none;
+
+      background: var(--danger);
     }
 
     .input-footer {
       display: flex;
       justify-content: space-between;
+
       padding: 5px 8px 1px;
+
       color: var(--muted);
+
       font-size: 11px;
     }
 
-    /* MOBILE */
+    /* =====================================
+       MOBILE
+    ===================================== */
 
-    @media (max-width: 760px) {
+    @media (max-width:760px) {
+
       .sidebar {
         display: none;
-      }
-
-      .input-area {
-        left: 0;
-        padding: 12px;
       }
 
       .topbar {
@@ -526,11 +781,23 @@
       }
 
       .chat {
-        padding: 18px 12px 130px;
+        padding:
+          18px
+          12px
+          145px;
+      }
+
+      .message-content,
+      .message.user .message-content {
+        max-width: 88%;
+      }
+
+      .user .bubble {
+        max-width: 88vw;
       }
 
       .bubble {
-        max-width: 90%;
+        font-size: 15px;
       }
 
       .prompt-grid {
@@ -541,948 +808,1451 @@
         width: 105px;
         height: 105px;
       }
+
+      .input-area {
+        padding:
+          10px
+          10px
+          13px;
+      }
+
+      .input-footer {
+        font-size: 10px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+  <!-- ===================================
+       SIDEBAR
+  ==================================== -->
 
-      <div class="brand">
-        <img src="zendrex-logo.png" alt="Zendrex AI">
-        <div class="brand-text">Zendrex <span>AI</span></div>
-      </div>
+  <aside class="sidebar">
 
-      <button class="new-chat" onclick="newChat()">
-        + New Chat
-      </button>
+    <div class="brand">
 
-      <div class="sidebar-title">
-        Quick prompts
-      </div>
+      <img
+        src="zendrex-logo.png"
+        alt="Zendrex AI"
+      >
 
-      <div class="quick-list">
-        <button class="quick-btn" onclick="usePrompt('Explain how an API works')">
-          Explain an API
-        </button>
-
-        <button class="quick-btn" onclick="usePrompt('Help me build a website')">
-          Build a website
-        </button>
-
-        <button class="quick-btn" onclick="usePrompt('Help me debug my code')">
-          Debug code
-        </button>
-
-        <button class="quick-btn" onclick="usePrompt('Give me some project ideas')">
-          Project ideas
-        </button>
-      </div>
-
-      <div class="sidebar-bottom">
-
-        <button class="side-btn" onclick="clearChat()">
-          🗑 Clear chat
-        </button>
-
-        <button class="side-btn" onclick="exportChat()">
-          ↓ Export chat
-        </button>
-
-        <button class="side-btn" onclick="toggleTheme()">
-          ◐ Change theme
-        </button>
-
-      </div>
-
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
-
-      <header class="topbar">
-
-        <div class="status">
-          <span class="status-dot"></span>
-          Zendrex AI online
-        </div>
-
-        <div class="top-actions">
-          <button class="icon-btn" onclick="toggleTheme()" title="Theme">
-            ◐
-          </button>
-        </div>
-
-      </header>
-
-      <!-- CHAT -->
-      <section class="chat" id="chat">
-
-        <div class="chat-inner" id="chatInner">
-
-          <div class="welcome" id="welcome">
-
-            <img
-              src="zendrex-logo.png"
-              alt="Zendrex AI Logo"
-              class="welcome-logo"
-            >
-
-            <h1>
-              Welcome to <span>Zendrex</span>
-            </h1>
-
-            <p>
-              A simple AI assistant for questions, coding,
-              websites, apps, ideas, explanations and more.
-            </p>
-
-            <div class="prompt-grid">
-
-              <button
-                class="prompt-card"
-                onclick="usePrompt('What can you help me with?')"
-              >
-                💡 What can you help me with?
-              </button>
-
-              <button
-                class="prompt-card"
-                onclick="usePrompt('Give me a cool website idea')"
-              >
-                🌐 Give me a website idea
-              </button>
-
-              <button
-                class="prompt-card"
-                onclick="usePrompt('Teach me something interesting')"
-              >
-                🧠 Teach me something
-              </button>
-
-              <button
-                class="prompt-card"
-                onclick="usePrompt('Help me create a simple app')"
-              >
-                ⚡ Help me create an app
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
-
-  </div>
-
-  <!-- INPUT -->
-  <div class="input-area">
-
-    <div class="input-box">
-
-      <div class="input-row">
-
-        <textarea
-          id="messageInput"
-          placeholder="Message Zendrex AI..."
-          rows="1"
-          maxlength="6000"
-        ></textarea>
-
-        <button
-          class="stop-btn"
-          id="stopBtn"
-          onclick="stopGeneration()"
-        >
-          ■
-        </button>
-
-        <button
-          class="send-btn"
-          id="sendBtn"
-          onclick="sendMessage()"
-        >
-          ↑
-        </button>
-
-      </div>
-
-      <div class="input-footer">
-        <span>Enter to send · Shift + Enter for new line</span>
-        <span id="counter">0 / 6000</span>
+      <div class="brand-name">
+        Zendrex <span>AI</span>
       </div>
 
     </div>
 
-  </div>
+    <button
+      class="new-chat"
+      onclick="newChat()"
+    >
+      + New Chat
+    </button>
 
-  <script>
 
-    /* =========================
-       CONFIG
-    ========================= */
+    <div class="sidebar-title">
+      Suggested
+    </div>
 
-    const WORKER_URL =
-      "https://steep-fog-986f.konanwork99.workers.dev";
+    <!-- Dynamic prompts appear here -->
+    <div
+      class="quick-list"
+      id="quickPrompts"
+    ></div>
 
 
-    /* =========================
-       ELEMENTS
-    ========================= */
+    <div class="sidebar-bottom">
 
-    const chat = document.getElementById("chat");
-    const chatInner = document.getElementById("chatInner");
-    const welcome = document.getElementById("welcome");
-    const input = document.getElementById("messageInput");
-    const counter = document.getElementById("counter");
-    const sendBtn = document.getElementById("sendBtn");
-    const stopBtn = document.getElementById("stopBtn");
+      <button
+        class="side-btn"
+        onclick="clearChat()"
+      >
+        🗑 Clear chat
+      </button>
 
+      <button
+        class="side-btn"
+        onclick="exportChat()"
+      >
+        ↓ Export chat
+      </button>
 
-    let controller = null;
-    let messages = [];
+      <button
+        class="side-btn"
+        onclick="toggleTheme()"
+      >
+        ◐ Change theme
+      </button>
 
+    </div>
 
-    /* =========================
-       LOAD CHAT
-    ========================= */
+  </aside>
 
-    function loadChat() {
 
-      try {
+  <!-- ===================================
+       MAIN
+  ==================================== -->
 
-        const saved =
-          JSON.parse(localStorage.getItem("zendrex_chat") || "[]");
+  <main class="main">
 
-        if (!Array.isArray(saved)) return;
+    <header class="topbar">
 
-        messages = saved;
+      <div class="status">
 
-        if (messages.length > 0) {
-          welcome.style.display = "none";
+        <span class="status-dot"></span>
 
-          messages.forEach(message => {
-            addMessage(
-              message.role,
-              message.content,
-              false
-            );
-          });
-        }
+        Zendrex AI online
 
-      } catch (error) {
-        console.log("Could not load chat.");
-      }
-    }
+      </div>
 
+      <button
+        class="icon-btn"
+        onclick="toggleTheme()"
+        title="Change theme"
+      >
+        ◐
+      </button>
 
-    /* =========================
-       SAVE CHAT
-    ========================= */
+    </header>
 
-    function saveChat() {
 
-      localStorage.setItem(
-        "zendrex_chat",
-        JSON.stringify(messages)
-      );
-    }
+    <!-- =================================
+         CHAT
+    ================================== -->
 
+    <section
+      class="chat"
+      id="chat"
+    >
 
-    /* =========================
-       ADD MESSAGE
-    ========================= */
+      <div
+        class="chat-inner"
+        id="chatInner"
+      >
 
-    function addMessage(role, text, save = true) {
-
-      if (welcome) {
-        welcome.style.display = "none";
-      }
-
-      const wrapper =
-        document.createElement("div");
-
-      wrapper.className =
-        "message " + role;
-
-      const avatar =
-        document.createElement("div");
-
-      avatar.className = "avatar";
-
-      if (role === "assistant") {
-
-        const img =
-          document.createElement("img");
-
-        img.src = "zendrex-logo.png";
-        img.alt = "Zendrex";
-
-        avatar.appendChild(img);
-
-      } else {
-
-        avatar.textContent = "👤";
-      }
-
-
-      const content =
-        document.createElement("div");
-
-
-      const bubble =
-        document.createElement("div");
-
-      bubble.className = "bubble";
-
-
-      if (role === "assistant") {
-
-        bubble.innerHTML =
-          formatAIResponse(text);
-
-      } else {
-
-        bubble.textContent = text;
-      }
-
-
-      content.appendChild(bubble);
-
-
-      if (role === "assistant") {
-
-        const tools =
-          document.createElement("div");
-
-        tools.className = "message-tools";
-
-        const copy =
-          document.createElement("button");
-
-        copy.className = "copy-btn";
-
-        copy.textContent = "Copy";
-
-        copy.onclick = () => {
-          navigator.clipboard.writeText(text);
-          copy.textContent = "Copied!";
-          setTimeout(() => {
-            copy.textContent = "Copy";
-          }, 1200);
-        };
-
-        tools.appendChild(copy);
-        content.appendChild(tools);
-      }
-
-
-      if (role === "user") {
-
-        wrapper.appendChild(content);
-        wrapper.appendChild(avatar);
-
-      } else {
-
-        wrapper.appendChild(avatar);
-        wrapper.appendChild(content);
-      }
-
-
-      chatInner.appendChild(wrapper);
-
-
-      if (save) {
-
-        messages.push({
-          role,
-          content: text
-        });
-
-        saveChat();
-      }
-
-
-      scrollToBottom();
-
-      return wrapper;
-    }
-
-
-    /* =========================
-       FORMAT AI RESPONSE
-    ========================= */
-
-    function formatAIResponse(text) {
-
-      let escaped =
-        escapeHTML(text);
-
-
-      escaped =
-        escaped.replace(
-          /```([\s\S]*?)```/g,
-          function(match, code) {
-
-            const cleanCode =
-              code.trim();
-
-            return `
-              <pre>
-                <button
-                  class="copy-btn code-copy"
-                  onclick="copyCode(this)"
-                >
-                  Copy code
-                </button>
-                <code>${cleanCode}</code>
-              </pre>
-            `;
-          }
-        );
-
-
-      escaped =
-        escaped.replace(
-          /`([^`]+)`/g,
-          "<code>$1</code>"
-        );
-
-
-      escaped =
-        escaped.replace(
-          /\n/g,
-          "<br>"
-        );
-
-
-      return escaped;
-    }
-
-
-    /* =========================
-       ESCAPE HTML
-    ========================= */
-
-    function escapeHTML(text) {
-
-      return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-
-    /* =========================
-       COPY CODE
-    ========================= */
-
-    function copyCode(button) {
-
-      const pre =
-        button.closest("pre");
-
-      const code =
-        pre.querySelector("code");
-
-      navigator.clipboard.writeText(
-        code.innerText
-      );
-
-      button.textContent = "Copied!";
-
-      setTimeout(() => {
-        button.textContent = "Copy code";
-      }, 1200);
-    }
-
-
-    /* =========================
-       SEND MESSAGE
-    ========================= */
-
-    async function sendMessage() {
-
-      const message =
-        input.value.trim();
-
-      if (!message) return;
-
-
-      addMessage(
-        "user",
-        message
-      );
-
-
-      input.value = "";
-      updateCounter();
-      autoResize();
-
-
-      setLoading(true);
-
-
-      const typing =
-        document.createElement("div");
-
-      typing.className =
-        "message assistant";
-
-      typing.id =
-        "typingMessage";
-
-      typing.innerHTML = `
-        <div class="avatar">
-          <img
-            src="zendrex-logo.png"
-            alt="Zendrex"
-          >
-        </div>
-
-        <div class="bubble">
-          <div class="typing">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      `;
-
-      chatInner.appendChild(typing);
-
-      scrollToBottom();
-
-
-      controller =
-        new AbortController();
-
-
-      try {
-
-        const response =
-          await fetch(
-            WORKER_URL,
-            {
-              method: "POST",
-
-              headers: {
-                "Content-Type": "application/json"
-              },
-
-              body: JSON.stringify({
-                prompt: message
-              }),
-
-              signal:
-                controller.signal
-            }
-          );
-
-
-        const data =
-          await response.json();
-
-
-        const typingElement =
-          document.getElementById(
-            "typingMessage"
-          );
-
-        if (typingElement) {
-          typingElement.remove();
-        }
-
-
-        if (!response.ok) {
-
-          throw new Error(
-            data.error ||
-            "Request failed."
-          );
-        }
-
-
-        const answer =
-          String(
-            data.answer ||
-            "Sorry, I couldn't generate a response."
-          );
-
-
-        addMessage(
-          "assistant",
-          answer
-        );
-
-
-      } catch (error) {
-
-        const typingElement =
-          document.getElementById(
-            "typingMessage"
-          );
-
-        if (typingElement) {
-          typingElement.remove();
-        }
-
-
-        if (error.name === "AbortError") {
-
-          addMessage(
-            "assistant",
-            "Generation stopped."
-          );
-
-        } else {
-
-          addMessage(
-            "assistant",
-            "Sorry, something went wrong. Please try again."
-          );
-
-          console.error(error);
-        }
-
-      } finally {
-
-        controller = null;
-
-        setLoading(false);
-      }
-    }
-
-
-    /* =========================
-       LOADING STATE
-    ========================= */
-
-    function setLoading(loading) {
-
-      sendBtn.style.display =
-        loading ? "none" : "block";
-
-      stopBtn.style.display =
-        loading ? "block" : "none";
-
-      input.disabled =
-        loading;
-    }
-
-
-    /* =========================
-       STOP
-    ========================= */
-
-    function stopGeneration() {
-
-      if (controller) {
-        controller.abort();
-      }
-    }
-
-
-    /* =========================
-       NEW CHAT
-    ========================= */
-
-    function newChat() {
-
-      messages = [];
-
-      localStorage.removeItem(
-        "zendrex_chat"
-      );
-
-      chatInner.innerHTML = "";
-
-      chatInner.appendChild(
-        createWelcome()
-      );
-
-      input.focus();
-    }
-
-
-    /* =========================
-       CREATE WELCOME
-    ========================= */
-
-    function createWelcome() {
-
-      const div =
-        document.createElement("div");
-
-      div.className = "welcome";
-      div.id = "welcome";
-
-      div.innerHTML = `
-        <img
-          src="zendrex-logo.png"
-          alt="Zendrex AI Logo"
-          class="welcome-logo"
+        <div
+          class="welcome"
+          id="welcome"
         >
 
-        <h1>
-          Welcome to <span>Zendrex</span>
-        </h1>
+          <img
+            src="zendrex-logo.png"
+            alt="Zendrex AI"
+            class="welcome-logo"
+          >
 
-        <p>
-          A simple AI assistant for questions,
-          coding, websites, apps, ideas,
-          explanations and more.
-        </p>
+          <h1>
+            Welcome to <span>Zendrex</span>
+          </h1>
 
-        <div class="prompt-grid">
+          <p>
+            Ask questions, build websites,
+            write code, learn something new,
+            get ideas and more.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         INPUT
+    ================================== -->
+
+    <div class="input-area">
+
+      <div class="input-box">
+
+        <div class="input-row">
+
+          <textarea
+            id="messageInput"
+            placeholder="Message Zendrex AI..."
+            rows="1"
+            maxlength="6000"
+          ></textarea>
 
           <button
-            class="prompt-card"
-            onclick="usePrompt('What can you help me with?')"
+            class="stop-btn"
+            id="stopBtn"
+            onclick="stopGeneration()"
           >
-            💡 What can you help me with?
+            ■
           </button>
 
           <button
-            class="prompt-card"
-            onclick="usePrompt('Give me a cool website idea')"
+            class="send-btn"
+            id="sendBtn"
+            onclick="sendMessage()"
           >
-            🌐 Give me a website idea
-          </button>
-
-          <button
-            class="prompt-card"
-            onclick="usePrompt('Teach me something interesting')"
-          >
-            🧠 Teach me something
-          </button>
-
-          <button
-            class="prompt-card"
-            onclick="usePrompt('Help me create a simple app')"
-          >
-            ⚡ Help me create an app
+            ↑
           </button>
 
         </div>
-      `;
 
-      return div;
+        <div class="input-footer">
+
+          <span>
+            Enter to send · Shift + Enter for new line
+          </span>
+
+          <span id="counter">
+            0 / 6000
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script>
+
+  /* =========================================
+     CONFIG
+  ========================================= */
+
+  const WORKER_URL =
+    "https://steep-fog-986f.konanwork99.workers.dev";
+
+  /*
+    New storage version.
+    Old broken conversations will not
+    automatically appear.
+  */
+
+  const STORAGE_KEY =
+    "zendrex_chat_v3";
+
+  const THEME_KEY =
+    "zendrex_theme";
+
+
+  /* =========================================
+     ELEMENTS
+  ========================================= */
+
+  const chat =
+    document.getElementById("chat");
+
+  const chatInner =
+    document.getElementById("chatInner");
+
+  const welcome =
+    document.getElementById("welcome");
+
+  const input =
+    document.getElementById("messageInput");
+
+  const counter =
+    document.getElementById("counter");
+
+  const sendBtn =
+    document.getElementById("sendBtn");
+
+  const stopBtn =
+    document.getElementById("stopBtn");
+
+  const quickPrompts =
+    document.getElementById("quickPrompts");
+
+
+  let messages = [];
+
+  let controller = null;
+
+
+  /* =========================================
+     SMART QUICK PROMPTS
+  ========================================= */
+
+  function updateQuickPrompts(text = "") {
+
+    const message =
+      text
+        .toLowerCase()
+        .trim();
+
+
+    let prompts;
+
+
+    /*
+      EMPTY / NEW CHAT
+    */
+
+    if (!message) {
+
+      prompts = [
+        "What can you help me with?",
+        "Give me a cool website idea",
+        "Teach me something interesting",
+        "Help me create an app"
+      ];
+
     }
 
 
-    /* =========================
-       CLEAR CHAT
-    ========================= */
+    /*
+      CODING
+    */
 
-    function clearChat() {
-
-      if (!confirm("Clear this chat?")) {
-        return;
-      }
-
-      newChat();
-    }
-
-
-    /* =========================
-       QUICK PROMPT
-    ========================= */
-
-    function usePrompt(text) {
-
-      input.value = text;
-
-      updateCounter();
-      autoResize();
-
-      input.focus();
-    }
-
-
-    /* =========================
-       EXPORT CHAT
-    ========================= */
-
-    function exportChat() {
-
-      if (!messages.length) {
-        alert("There is no chat to export yet.");
-        return;
-      }
-
-
-      let output =
-        "ZENDREX AI CHAT\n\n";
-
-
-      messages.forEach(message => {
-
-        output +=
-          `${message.role.toUpperCase()}:\n`;
-
-        output +=
-          `${message.content}\n\n`;
-      });
-
-
-      const blob =
-        new Blob(
-          [output],
-          {
-            type: "text/plain"
-          }
-        );
-
-
-      const url =
-        URL.createObjectURL(blob);
-
-
-      const a =
-        document.createElement("a");
-
-      a.href = url;
-
-      a.download =
-        "zendrex-chat.txt";
-
-      a.click();
-
-
-      URL.revokeObjectURL(url);
-    }
-
-
-    /* =========================
-       THEME
-    ========================= */
-
-    function toggleTheme() {
-
-      document.body.classList.toggle(
-        "light"
-      );
-
-      localStorage.setItem(
-        "zendrex_theme",
-        document.body.classList.contains("light")
-          ? "light"
-          : "dark"
-      );
-    }
-
-
-    /* =========================
-       AUTO RESIZE
-    ========================= */
-
-    function autoResize() {
-
-      input.style.height = "auto";
-
-      input.style.height =
-        Math.min(
-          input.scrollHeight,
-          180
-        ) + "px";
-    }
-
-
-    /* =========================
-       COUNTER
-    ========================= */
-
-    function updateCounter() {
-
-      counter.textContent =
-        `${input.value.length} / 6000`;
-    }
-
-
-    /* =========================
-       SCROLL
-    ========================= */
-
-    function scrollToBottom() {
-
-      setTimeout(() => {
-
-        chat.scrollTop =
-          chat.scrollHeight;
-
-      }, 30);
-    }
-
-
-    /* =========================
-       INPUT EVENTS
-    ========================= */
-
-    input.addEventListener(
-      "input",
-      () => {
-
-        updateCounter();
-        autoResize();
-      }
-    );
-
-
-    input.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Enter" &&
-          !event.shiftKey
-        ) {
-
-          event.preventDefault();
-
-          sendMessage();
-        }
-      }
-    );
-
-
-    /* =========================
-       LOAD THEME
-    ========================= */
-
-    if (
-      localStorage.getItem(
-        "zendrex_theme"
-      ) === "light"
+    else if (
+      /\b(code|coding|program|programming|python|javascript|typescript|java|c\+\+|c#|php|rust|golang|sql|html|css|react|nextjs|node|api|json|debug|debugging|bug|script|function|database)\b/i
+        .test(message)
     ) {
 
-      document.body.classList.add(
-        "light"
-      );
+      prompts = [
+        "Explain this code",
+        "Debug my code",
+        "Improve my code",
+        "Give me the complete code"
+      ];
+
     }
 
 
-    /* =========================
-       START
-    ========================= */
+    /*
+      WEBSITE
+    */
 
-    loadChat();
+    else if (
+      /\b(website|web site|webpage|web page|frontend|backend|landing page|portfolio|web app|webapp)\b/i
+        .test(message)
+    ) {
+
+      prompts = [
+        "Build the complete website",
+        "Make it responsive",
+        "Improve the design",
+        "Add more features"
+      ];
+
+    }
+
+
+    /*
+      APP
+    */
+
+    else if (
+      /\b(app|application|software|android|ios|mobile|mobile app)\b/i
+        .test(message)
+    ) {
+
+      prompts = [
+        "Build the basic version",
+        "Improve the UI",
+        "Add more features",
+        "Give me the complete code"
+      ];
+
+    }
+
+
+    /*
+      MATH
+    */
+
+    else if (
+      /\b(math|calculate|calculator|equation|algebra|geometry|percentage|fraction|formula|solve|number|numbers)\b/i
+        .test(message)
+    ) {
+
+      prompts = [
+        "Solve it step by step",
+        "Explain the answer",
+        "Show the formula",
+        "Give me another example"
+      ];
+
+    }
+
+
+    /*
+      SCHOOL / LEARNING
+    */
+
+    else if (
+      /\b(school|homework|study|lesson|chapter|science|history|biology|chemistry|physics|geography|learn|learning|exam)\b/i
+        .test(message)
+    ) {
+
+      prompts = [
+        "Explain it simply",
+        "Explain it in detail",
+        "Give me an example",
+        "Quiz me on this"
+      ];
+
+    }
+
+
+    /*
+      WRITING
+    */
+
+    else if (
+      /\b(write|writing|essay|paragraph|message|email|letter|story|caption|rewrite|grammar|sentence|text)\b/i
+        .test(message)
+    ) {
+
+      prompts = [
+        "Make it better",
+        "Make it shorter",
+        "Make it more professional",
+        "Give me another version"
+      ];
+
+    }
+
+
+    /*
+      IDEAS / CREATION
+    */
+
+    else if (
+      /\b(idea|ideas|project|projects|business|startup|create|invent|build|make|design)\b/i
+        .test(message)
+    ) {
+
+      prompts = [
+        "Give me more ideas",
+        "Make it more creative",
+        "Turn this into a project",
+        "Give me a step-by-step plan"
+      ];
+
+    }
+
+
+    /*
+      GENERAL
+    */
+
+    else {
+
+      prompts = [
+        "Explain this simply",
+        "Tell me more",
+        "Give me an example",
+        "What else should I know?"
+      ];
+
+    }
+
+
+    /*
+      DRAW BUTTONS
+    */
+
+    quickPrompts.innerHTML = "";
+
+
+    prompts.forEach(prompt => {
+
+      const button =
+        document.createElement("button");
+
+      button.className =
+        "quick-btn";
+
+      button.textContent =
+        prompt;
+
+      button.onclick = () => {
+
+        usePrompt(prompt);
+
+      };
+
+      quickPrompts.appendChild(button);
+
+    });
+
+  }
+
+
+  /* =========================================
+     USE PROMPT
+  ========================================= */
+
+  function usePrompt(text) {
+
+    input.value =
+      text;
 
     updateCounter();
 
     autoResize();
 
-  </script>
+    updateQuickPrompts(text);
+
+    input.focus();
+
+  }
+
+
+  /* =========================================
+     LOAD CHAT
+  ========================================= */
+
+  function loadChat() {
+
+    try {
+
+      const saved =
+        JSON.parse(
+          localStorage.getItem(
+            STORAGE_KEY
+          ) || "[]"
+        );
+
+
+      if (!Array.isArray(saved)) {
+        return;
+      }
+
+
+      messages =
+        saved;
+
+
+      if (!messages.length) {
+        return;
+      }
+
+
+      welcome.style.display =
+        "none";
+
+
+      messages.forEach(message => {
+
+        addMessage(
+          message.role,
+          message.content,
+          false
+        );
+
+      });
+
+
+    } catch (error) {
+
+      console.log(
+        "Could not load saved chat."
+      );
+
+    }
+
+  }
+
+
+  /* =========================================
+     SAVE CHAT
+  ========================================= */
+
+  function saveChat() {
+
+    try {
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(messages)
+      );
+
+    } catch (error) {
+
+      console.log(
+        "Could not save chat."
+      );
+
+    }
+
+  }
+
+
+  /* =========================================
+     ADD MESSAGE
+  ========================================= */
+
+  function addMessage(
+    role,
+    text,
+    save = true
+  ) {
+
+    welcome.style.display =
+      "none";
+
+
+    const wrapper =
+      document.createElement("div");
+
+    wrapper.className =
+      `message ${role}`;
+
+
+    const avatar =
+      document.createElement("div");
+
+    avatar.className =
+      "avatar";
+
+
+    if (role === "assistant") {
+
+      const img =
+        document.createElement("img");
+
+      img.src =
+        "zendrex-logo.png";
+
+      img.alt =
+        "Zendrex AI";
+
+      avatar.appendChild(img);
+
+    } else {
+
+      avatar.textContent =
+        "👤";
+
+    }
+
+
+    const content =
+      document.createElement("div");
+
+    content.className =
+      "message-content";
+
+
+    const bubble =
+      document.createElement("div");
+
+    bubble.className =
+      "bubble";
+
+
+    if (role === "assistant") {
+
+      bubble.innerHTML =
+        formatAIResponse(text);
+
+    } else {
+
+      bubble.textContent =
+        text;
+
+    }
+
+
+    content.appendChild(
+      bubble
+    );
+
+
+    /*
+      COPY BUTTON
+    */
+
+    if (role === "assistant") {
+
+      const tools =
+        document.createElement("div");
+
+      tools.className =
+        "message-tools";
+
+
+      const copy =
+        document.createElement("button");
+
+      copy.className =
+        "copy-btn";
+
+      copy.textContent =
+        "Copy";
+
+
+      copy.onclick = () => {
+
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+
+            copy.textContent =
+              "Copied!";
+
+
+            setTimeout(() => {
+
+              copy.textContent =
+                "Copy";
+
+            },1200);
+
+          });
+
+      };
+
+
+      tools.appendChild(
+        copy
+      );
+
+      content.appendChild(
+        tools
+      );
+
+    }
+
+
+    /*
+      MESSAGE ORDER
+    */
+
+    if (role === "user") {
+
+      wrapper.appendChild(
+        content
+      );
+
+      wrapper.appendChild(
+        avatar
+      );
+
+    } else {
+
+      wrapper.appendChild(
+        avatar
+      );
+
+      wrapper.appendChild(
+        content
+      );
+
+    }
+
+
+    chatInner.appendChild(
+      wrapper
+    );
+
+
+    /*
+      SAVE
+    */
+
+    if (save) {
+
+      messages.push({
+        role,
+        content: text
+      });
+
+      saveChat();
+
+    }
+
+
+    scrollToBottom();
+
+
+    return wrapper;
+
+  }
+
+
+  /* =========================================
+     FORMAT AI RESPONSE
+  ========================================= */
+
+  function formatAIResponse(text) {
+
+    let output =
+      escapeHTML(text);
+
+
+    /*
+      CODE BLOCKS
+    */
+
+    output =
+      output.replace(
+        /```([\s\S]*?)```/g,
+        function(match, code) {
+
+          const cleanCode =
+            code.trim();
+
+
+          return `
+            <pre>
+              <button
+                class="copy-btn code-copy"
+                onclick="copyCode(this)"
+              >
+                Copy code
+              </button>
+
+              <code>${cleanCode}</code>
+            </pre>
+          `;
+
+        }
+      );
+
+
+    /*
+      INLINE CODE
+    */
+
+    output =
+      output.replace(
+        /`([^`]+)`/g,
+        "<code>$1</code>"
+      );
+
+
+    /*
+      NEW LINES
+    */
+
+    output =
+      output.replace(
+        /\n/g,
+        "<br>"
+      );
+
+
+    return output;
+
+  }
+
+
+  /* =========================================
+     ESCAPE HTML
+  ========================================= */
+
+  function escapeHTML(text) {
+
+    return String(text)
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  /* =========================================
+     COPY CODE
+  ========================================= */
+
+  function copyCode(button) {
+
+    const pre =
+      button.closest("pre");
+
+
+    if (!pre) {
+      return;
+    }
+
+
+    const code =
+      pre.querySelector("code");
+
+
+    if (!code) {
+      return;
+    }
+
+
+    navigator.clipboard
+      .writeText(code.innerText)
+      .then(() => {
+
+        button.textContent =
+          "Copied!";
+
+
+        setTimeout(() => {
+
+          button.textContent =
+            "Copy code";
+
+        },1200);
+
+      });
+
+  }
+
+
+  /* =========================================
+     SEND MESSAGE
+  ========================================= */
+
+  async function sendMessage() {
+
+    const message =
+      input.value.trim();
+
+
+    if (!message) {
+      return;
+    }
+
+
+    /*
+      Update suggestions based on
+      what the user actually sent.
+    */
+
+    updateQuickPrompts(
+      message
+    );
+
+
+    addMessage(
+      "user",
+      message
+    );
+
+
+    input.value = "";
+
+    updateCounter();
+
+    autoResize();
+
+
+    setLoading(true);
+
+
+    /*
+      TYPING INDICATOR
+    */
+
+    const typing =
+      document.createElement("div");
+
+    typing.className =
+      "message assistant";
+
+    typing.id =
+      "typingMessage";
+
+
+    typing.innerHTML = `
+
+      <div class="avatar">
+
+        <img
+          src="zendrex-logo.png"
+          alt="Zendrex AI"
+        >
+
+      </div>
+
+      <div class="message-content">
+
+        <div class="bubble">
+
+          <div class="typing">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    chatInner.appendChild(
+      typing
+    );
+
+
+    scrollToBottom();
+
+
+    controller =
+      new AbortController();
+
+
+    try {
+
+      const response =
+        await fetch(
+          WORKER_URL,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body: JSON.stringify({
+              prompt: message
+            }),
+
+            signal:
+              controller.signal
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      const typingElement =
+        document.getElementById(
+          "typingMessage"
+        );
+
+
+      if (typingElement) {
+        typingElement.remove();
+      }
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          data.error ||
+          "Request failed."
+        );
+
+      }
+
+
+      const answer =
+        String(
+          data.answer ||
+          "Sorry, I couldn't generate a response."
+        ).trim();
+
+
+      addMessage(
+        "assistant",
+        answer
+      );
+
+
+    } catch (error) {
+
+      const typingElement =
+        document.getElementById(
+          "typingMessage"
+        );
+
+
+      if (typingElement) {
+        typingElement.remove();
+      }
+
+
+      if (
+        error.name ===
+        "AbortError"
+      ) {
+
+        addMessage(
+          "assistant",
+          "Generation stopped."
+        );
+
+      } else {
+
+        console.error(error);
+
+        addMessage(
+          "assistant",
+          "Sorry, something went wrong. Please try again."
+        );
+
+      }
+
+
+    } finally {
+
+      controller = null;
+
+      setLoading(false);
+
+    }
+
+  }
+
+
+  /* =========================================
+     LOADING
+  ========================================= */
+
+  function setLoading(loading) {
+
+    sendBtn.style.display =
+      loading ? "none" : "block";
+
+    stopBtn.style.display =
+      loading ? "block" : "none";
+
+    input.disabled =
+      loading;
+
+  }
+
+
+  /* =========================================
+     STOP
+  ========================================= */
+
+  function stopGeneration() {
+
+    if (controller) {
+
+      controller.abort();
+
+    }
+
+  }
+
+
+  /* =========================================
+     NEW CHAT
+  ========================================= */
+
+  function newChat() {
+
+    messages = [];
+
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+
+    chatInner.innerHTML = "";
+
+
+    const newWelcome =
+      document.createElement("div");
+
+    newWelcome.className =
+      "welcome";
+
+    newWelcome.id =
+      "welcome";
+
+
+    newWelcome.innerHTML = `
+
+      <img
+        src="zendrex-logo.png"
+        alt="Zendrex AI"
+        class="welcome-logo"
+      >
+
+      <h1>
+        Welcome to <span>Zendrex</span>
+      </h1>
+
+      <p>
+        Ask questions, build websites,
+        write code, learn something new,
+        get ideas and more.
+      </p>
+
+    `;
+
+
+    chatInner.appendChild(
+      newWelcome
+    );
+
+
+    input.value = "";
+
+    updateCounter();
+
+    autoResize();
+
+    updateQuickPrompts("");
+
+    input.focus();
+
+  }
+
+
+  /* =========================================
+     CLEAR CHAT
+  ========================================= */
+
+  function clearChat() {
+
+    newChat();
+
+  }
+
+
+  /* =========================================
+     EXPORT CHAT
+  ========================================= */
+
+  function exportChat() {
+
+    if (!messages.length) {
+
+      alert(
+        "There is no chat to export yet."
+      );
+
+      return;
+
+    }
+
+
+    let output =
+      "ZENDREX AI CHAT\n\n";
+
+
+    messages.forEach(message => {
+
+      output +=
+        message.role.toUpperCase();
+
+      output +=
+        ":\n";
+
+      output +=
+        message.content;
+
+      output +=
+        "\n\n";
+
+    });
+
+
+    const blob =
+      new Blob(
+        [output],
+        {
+          type:
+            "text/plain"
+        }
+      );
+
+
+    const url =
+      URL.createObjectURL(
+        blob
+      );
+
+
+    const link =
+      document.createElement("a");
+
+
+    link.href =
+      url;
+
+    link.download =
+      "zendrex-chat.txt";
+
+
+    document.body.appendChild(
+      link
+    );
+
+    link.click();
+
+    link.remove();
+
+
+    URL.revokeObjectURL(
+      url
+    );
+
+  }
+
+
+  /* =========================================
+     THEME
+  ========================================= */
+
+  function toggleTheme() {
+
+    document.body.classList.toggle(
+      "dark"
+    );
+
+
+    const theme =
+      document.body.classList.contains(
+        "dark"
+      )
+        ? "dark"
+        : "light";
+
+
+    localStorage.setItem(
+      THEME_KEY,
+      theme
+    );
+
+  }
+
+
+  /* =========================================
+     AUTO RESIZE
+  ========================================= */
+
+  function autoResize() {
+
+    input.style.height =
+      "auto";
+
+
+    input.style.height =
+      Math.min(
+        input.scrollHeight,
+        180
+      ) + "px";
+
+  }
+
+
+  /* =========================================
+     COUNTER
+  ========================================= */
+
+  function updateCounter() {
+
+    counter.textContent =
+      `${input.value.length} / 6000`;
+
+  }
+
+
+  /* =========================================
+     SCROLL
+  ========================================= */
+
+  function scrollToBottom() {
+
+    setTimeout(() => {
+
+      chat.scrollTop =
+        chat.scrollHeight;
+
+    },40);
+
+  }
+
+
+  /* =========================================
+     INPUT EVENTS
+  ========================================= */
+
+  input.addEventListener(
+    "input",
+    function() {
+
+      updateCounter();
+
+      autoResize();
+
+      /*
+        THIS IS WHAT MAKES THE
+        SUGGESTIONS CHANGE WHILE
+        THE USER IS TYPING.
+      */
+
+      updateQuickPrompts(
+        input.value
+      );
+
+    }
+  );
+
+
+  input.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Enter" &&
+        !event.shiftKey
+      ) {
+
+        event.preventDefault();
+
+        sendMessage();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     LOAD THEME
+  ========================================= */
+
+  const savedTheme =
+    localStorage.getItem(
+      THEME_KEY
+    );
+
+
+  if (
+    savedTheme === "dark"
+  ) {
+
+    document.body.classList.add(
+      "dark"
+    );
+
+  }
+
+
+  /* =========================================
+     START
+  ========================================= */
+
+  updateQuickPrompts("");
+
+  loadChat();
+
+  updateCounter();
+
+  autoResize();
+
+</script>
 
 </body>
 </html>

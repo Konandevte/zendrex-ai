@@ -8,6 +8,10 @@
 
 <style>
 
+/* =========================
+   RESET
+========================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,88 +19,91 @@
 }
 
 :root {
-  --bg: #070a11;
-  --panel: #0d111a;
-  --panel2: #111722;
-  --border: #202938;
-  --text: #f4f7fb;
-  --muted: #8b96a8;
+  --bg: #0b0e14;
+  --panel: #10141c;
+  --panel-light: #171c25;
+  --border: #272e3a;
+
+  --text: #f5f7fb;
+  --muted: #9aa4b4;
+
   --blue: #3b82f6;
-  --blue2: #2563eb;
-  --danger: #ef4444;
+  --blue-hover: #2563eb;
+
   --user: #2563eb;
-  --assistant: #111824;
+  --assistant: #151b25;
 }
 
-body.light {
-  --bg: #eef2f7;
-  --panel: #ffffff;
-  --panel2: #f4f6f9;
-  --border: #dce2ea;
-  --text: #111827;
-  --muted: #64748b;
-  --assistant: #f5f7fa;
-}
+
+/* =========================
+   BODY
+========================= */
 
 body {
+  height: 100vh;
+  overflow: hidden;
+
   background:
     radial-gradient(
-      circle at top left,
-      rgba(37, 99, 235, 0.14),
+      circle at 20% 0%,
+      rgba(59,130,246,0.12),
       transparent 35%
     ),
     var(--bg);
 
   color: var(--text);
-  height: 100vh;
-  overflow: hidden;
 
   font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
+    Arial,
+    Helvetica,
     sans-serif;
 }
 
-/* APP */
+
+/* =========================
+   APP
+========================= */
 
 .app {
   width: 100%;
   height: 100vh;
+
   display: flex;
 }
 
-/* SIDEBAR */
+
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar {
   width: 270px;
-  background: rgba(10, 14, 22, 0.9);
+  flex-shrink: 0;
+
+  background: rgba(13,17,24,0.96);
+
   border-right: 1px solid var(--border);
-  padding: 15px;
+
+  padding: 18px;
 
   display: flex;
   flex-direction: column;
-
-  transition: 0.25s;
 }
 
-body.light .sidebar {
-  background: rgba(255,255,255,0.9);
-}
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 8px;
-  margin-bottom: 15px;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
 }
 
+
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 43px;
+  height: 43px;
 
   display: flex;
   align-items: center;
@@ -112,171 +119,187 @@ body.light .sidebar {
     );
 
   color: white;
+
+  font-size: 19px;
   font-weight: 800;
-  font-size: 18px;
-
-  box-shadow:
-    0 8px 25px rgba(37,99,235,.25);
 }
 
-.brand-text strong {
-  display: block;
-  font-size: 15px;
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 700;
 }
 
-.brand-text span {
-  display: block;
+
+.brand-subtitle {
   color: var(--muted);
-  font-size: 11px;
-  margin-top: 2px;
+
+  font-size: 12px;
+
+  margin-top: 3px;
 }
+
+
+/* NEW CHAT */
 
 .new-chat {
   width: 100%;
-  border: 1px solid #31548c;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(37,99,235,.2),
-      rgba(124,58,237,.15)
-    );
+  padding: 12px;
+
+  border-radius: 10px;
+
+  border: 1px solid #34445d;
+
+  background: #151d2a;
 
   color: var(--text);
 
-  border-radius: 11px;
-  padding: 11px;
-
-  cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
 
-  margin-bottom: 16px;
-
-  transition: .2s;
-}
-
-.new-chat:hover {
-  transform: translateY(-1px);
-  border-color: var(--blue);
-}
-
-/* SIDEBAR SECTIONS */
-
-.side-title {
-  color: var(--muted);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-
-  padding: 0 8px;
-  margin: 12px 0 8px;
-}
-
-.quick {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.quick button {
-  text-align: left;
-
-  border: none;
-  background: transparent;
-
-  color: var(--muted);
-
-  padding: 9px;
-  border-radius: 9px;
-
   cursor: pointer;
 
-  transition: .15s;
+  transition: 0.15s;
 }
 
-.quick button:hover {
-  background: var(--panel2);
-  color: var(--text);
+
+.new-chat:hover {
+  background: #1c2737;
+  border-color: #4b6d9d;
 }
+
+
+/* SIDEBAR TITLE */
+
+.sidebar-title {
+  margin-top: 25px;
+  margin-bottom: 9px;
+
+  padding-left: 5px;
+
+  color: #788397;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* QUICK BUTTONS */
+
+.quick-button {
+  width: 100%;
+
+  padding: 10px;
+
+  margin-bottom: 3px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #aab3c2;
+
+  text-align: left;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+
+.quick-button:hover {
+  background: #171e29;
+  color: white;
+}
+
 
 /* SIDEBAR BOTTOM */
 
 .sidebar-bottom {
   margin-top: auto;
-
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }
 
-.side-button {
-  border: 1px solid transparent;
+
+.sidebar-button {
+  width: 100%;
+
+  padding: 10px;
+
+  border: none;
+
+  border-radius: 8px;
+
   background: transparent;
 
-  color: var(--muted);
-
-  padding: 9px;
-  border-radius: 9px;
+  color: #aab3c2;
 
   text-align: left;
+
+  font-size: 13px;
+
   cursor: pointer;
 }
 
-.side-button:hover {
-  background: var(--panel2);
-  color: var(--text);
+
+.sidebar-button:hover {
+  background: #171e29;
+  color: white;
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
 
 .main {
   flex: 1;
 
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
-
-  min-width: 0;
 }
 
-/* HEADER */
+
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar {
-  height: 64px;
+  height: 65px;
+
+  flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   padding: 0 22px;
 
   border-bottom: 1px solid var(--border);
 
-  background: rgba(7,10,17,.72);
+  background: rgba(11,14,20,0.88);
 
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(12px);
 }
 
-body.light .topbar {
-  background: rgba(255,255,255,.72);
-}
 
 .top-left {
   display: flex;
+
   align-items: center;
-  gap: 10px;
+
+  gap: 9px;
 }
 
-.mobile-menu {
-  display: none;
-
-  border: none;
-  background: transparent;
-
-  color: var(--text);
-
-  font-size: 21px;
-  cursor: pointer;
-}
 
 .status-dot {
   width: 8px;
@@ -287,22 +310,27 @@ body.light .topbar {
   background: #22c55e;
 
   box-shadow:
-    0 0 10px rgba(34,197,94,.7);
+    0 0 9px rgba(34,197,94,0.7);
 }
 
-.status {
+
+.status-text {
+  color: #a7b0bf;
+
   font-size: 13px;
-  color: var(--muted);
 }
+
 
 .top-actions {
   display: flex;
+
   gap: 7px;
 }
 
+
 .icon-button {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
 
   border-radius: 9px;
 
@@ -310,59 +338,75 @@ body.light .topbar {
 
   background: var(--panel);
 
-  color: var(--muted);
+  color: #aab3c2;
+
+  font-size: 16px;
 
   cursor: pointer;
-
-  transition: .15s;
 }
+
 
 .icon-button:hover {
-  color: var(--text);
-  border-color: #3b4a61;
+  color: white;
+
+  background: #171e29;
 }
 
-/* CHAT */
+
+/* =========================
+   CHAT AREA
+========================= */
 
 .chat {
   flex: 1;
 
   overflow-y: auto;
 
-  padding: 30px 20px 160px;
-
-  scroll-behavior: smooth;
+  padding: 35px 25px 170px;
 }
+
 
 .chat-inner {
   width: 100%;
-  max-width: 850px;
+
+  max-width: 900px;
+
   margin: auto;
 }
 
-/* WELCOME */
+
+/* =========================
+   WELCOME
+========================= */
 
 .welcome {
-  min-height: 60vh;
+  min-height: 62vh;
 
   display: flex;
-  align-items: center;
+
   justify-content: center;
+
+  align-items: center;
 
   text-align: center;
 }
 
-.welcome-box {
-  max-width: 620px;
+
+.welcome-content {
+  width: 100%;
+
+  max-width: 650px;
 }
 
-.welcome-logo {
-  width: 68px;
-  height: 68px;
 
-  margin: 0 auto 20px;
+.welcome-logo {
+  width: 72px;
+  height: 72px;
+
+  margin: 0 auto 22px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -375,115 +419,155 @@ body.light .topbar {
       #7c3aed
     );
 
-  font-size: 28px;
+  font-size: 29px;
+
   font-weight: 800;
 
   box-shadow:
-    0 15px 45px rgba(37,99,235,.25);
+    0 15px 45px rgba(37,99,235,0.25);
 }
+
 
 .welcome h1 {
   font-size: 36px;
-  letter-spacing: -.03em;
 
-  margin-bottom: 10px;
+  line-height: 1.2;
+
+  margin-bottom: 12px;
+
+  letter-spacing: -0.8px;
 }
+
 
 .welcome p {
   color: var(--muted);
+
+  font-size: 16px;
+
   line-height: 1.6;
 }
 
-/* PROMPTS */
+
+/* =========================
+   PROMPTS
+========================= */
 
 .prompt-grid {
-  margin-top: 27px;
+  margin-top: 30px;
 
   display: grid;
 
   grid-template-columns:
     repeat(2, 1fr);
 
-  gap: 9px;
+  gap: 10px;
 }
 
+
 .prompt {
+  padding: 16px;
+
+  border-radius: 12px;
+
   border: 1px solid var(--border);
 
   background: var(--panel);
 
   color: var(--text);
 
-  padding: 14px;
-
-  border-radius: 12px;
-
   text-align: left;
 
   cursor: pointer;
 
-  transition: .18s;
+  transition: 0.15s;
 }
 
+
 .prompt:hover {
-  border-color: #36517a;
+  background: #151c27;
+
+  border-color: #3a4b65;
+
   transform: translateY(-1px);
 }
 
+
 .prompt strong {
   display: block;
-  font-size: 13px;
-  margin-bottom: 4px;
+
+  font-size: 14px;
+
+  margin-bottom: 5px;
 }
+
 
 .prompt span {
   color: var(--muted);
-  font-size: 11px;
+
+  font-size: 12px;
 }
 
-/* MESSAGES */
+
+/* =========================
+   MESSAGES
+========================= */
 
 .message {
   display: flex;
 
-  gap: 12px;
+  gap: 13px;
 
-  margin-bottom: 26px;
+  margin-bottom: 30px;
 
-  animation: messageIn .2s ease;
+  animation:
+    messageAppear 0.18s ease;
 }
 
-@keyframes messageIn {
+
+@keyframes messageAppear {
+
   from {
     opacity: 0;
-    transform: translateY(5px);
+
+    transform:
+      translateY(5px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
+
 }
 
+
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 
   flex-shrink: 0;
 
-  border-radius: 10px;
-
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  font-size: 12px;
+  border-radius: 10px;
+
+  font-size: 13px;
+
   font-weight: 700;
 }
 
+
 .user-avatar {
   background: #334155;
+
+  color: white;
 }
+
 
 .ai-avatar {
   background:
@@ -492,264 +576,333 @@ body.light .topbar {
       #2563eb,
       #7c3aed
     );
+
+  color: white;
 }
+
 
 .message-content {
-  min-width: 0;
   flex: 1;
+
+  min-width: 0;
 }
+
 
 .message-name {
+  color: #8994a6;
+
   font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
+
+  margin-bottom: 7px;
 }
 
-.message-text {
-  font-size: 14px;
-  line-height: 1.7;
 
+.message-text {
   color: var(--text);
+
+  font-size: 16px;
+
+  line-height: 1.7;
 
   overflow-wrap: anywhere;
 }
 
-.user-message .message-text {
-  background: var(--user);
 
+.user-message .message-text {
   display: inline-block;
 
-  padding: 10px 14px;
+  padding: 11px 16px;
 
   border-radius: 13px;
 
+  background: var(--user);
+
   color: white;
 
-  line-height: 1.5;
+  font-size: 16px;
+
+  line-height: 1.55;
 }
 
-/* MESSAGE ACTIONS */
+
+/* =========================
+   MESSAGE BUTTONS
+========================= */
 
 .message-actions {
   display: flex;
 
-  gap: 5px;
+  gap: 7px;
 
-  margin-top: 8px;
+  margin-top: 9px;
 }
 
+
 .message-action {
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
   border: 1px solid var(--border);
 
   background: var(--panel);
 
-  color: var(--muted);
+  color: #8994a6;
 
-  border-radius: 7px;
-
-  padding: 5px 8px;
-
-  font-size: 10px;
+  font-size: 11px;
 
   cursor: pointer;
 }
 
+
 .message-action:hover {
-  color: var(--text);
+  color: white;
+
+  background: #171e29;
 }
 
-/* CODE */
+
+/* =========================
+   CODE BLOCK
+========================= */
 
 .code-box {
-  margin: 13px 0;
-
-  border: 1px solid #29364a;
-
-  border-radius: 11px;
+  margin: 14px 0;
 
   overflow: hidden;
 
-  background: #080c12;
+  border-radius: 11px;
+
+  border: 1px solid #303b4e;
+
+  background: #080b10;
 }
 
-.code-head {
-  height: 37px;
+
+.code-header {
+  height: 39px;
+
+  padding: 0 12px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
-  padding: 0 11px;
+  background: #111722;
 
-  background: #101722;
-
-  border-bottom: 1px solid #29364a;
+  border-bottom: 1px solid #303b4e;
 }
 
-.code-lang {
-  color: #8793a6;
 
-  font-size: 10px;
+.code-language {
+  color: #8d99aa;
+
+  font-size: 11px;
 
   text-transform: uppercase;
 }
+
 
 .copy-code {
   border: none;
 
   background: transparent;
 
-  color: #9ca8ba;
+  color: #aab4c4;
+
+  font-size: 11px;
 
   cursor: pointer;
-
-  font-size: 10px;
 }
+
 
 .copy-code:hover {
   color: white;
 }
 
+
 pre {
-  padding: 16px;
+  margin: 0;
+
+  padding: 17px;
 
   overflow-x: auto;
-
-  margin: 0;
 }
 
+
 pre code {
+  color: #e8edf5;
+
   font-family:
     Consolas,
     Monaco,
     monospace;
 
-  font-size: 12px;
+  font-size: 14px;
 
   line-height: 1.65;
-
-  color: #e5e7eb;
 }
 
-/* THINKING */
+
+/* =========================
+   THINKING
+========================= */
 
 .thinking {
   display: flex;
+
   align-items: center;
+
   gap: 5px;
+
   padding: 8px 0;
 }
 
+
 .thinking span {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 
   border-radius: 50%;
 
-  background: #7d899b;
+  background: #8b96a8;
 
-  animation: typing 1.2s infinite;
+  animation:
+    typing 1.2s infinite;
 }
+
 
 .thinking span:nth-child(2) {
   animation-delay: .15s;
 }
 
+
 .thinking span:nth-child(3) {
   animation-delay: .3s;
 }
 
+
 @keyframes typing {
 
-  0%, 60%, 100% {
+  0%,
+  60%,
+  100% {
     opacity: .25;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 
   30% {
     opacity: 1;
-    transform: translateY(-3px);
+
+    transform:
+      translateY(-3px);
   }
 
 }
 
-/* INPUT AREA */
 
-.input-wrapper {
+/* =========================
+   INPUT
+========================= */
+
+.input-area {
   position: fixed;
+
+  left: 270px;
+
+  right: 0;
 
   bottom: 0;
 
-  left: 270px;
-  right: 0;
-
-  padding: 16px 20px 20px;
+  padding:
+    15px
+    25px
+    21px;
 
   background:
     linear-gradient(
       transparent,
-      var(--bg) 35%
+      var(--bg) 32%
     );
 
   pointer-events: none;
 }
 
-.input-box {
-  pointer-events: auto;
 
-  max-width: 850px;
+.input-box {
+  max-width: 900px;
 
   margin: auto;
 
-  border: 1px solid #344054;
+  pointer-events: auto;
 
-  background: var(--panel);
+  border:
+    1px solid #354154;
 
   border-radius: 16px;
 
-  box-shadow:
-    0 12px 45px rgba(0,0,0,.25);
+  background: #111722;
 
-  overflow: hidden;
+  box-shadow:
+    0 15px 45px
+    rgba(0,0,0,0.28);
 }
+
 
 .input-row {
   display: flex;
+
   align-items: flex-end;
 
-  padding: 9px;
   gap: 8px;
+
+  padding: 9px;
 }
+
 
 #message {
   flex: 1;
 
+  min-height: 45px;
+
+  max-height: 160px;
+
   resize: none;
 
   border: none;
+
   outline: none;
 
   background: transparent;
 
-  color: var(--text);
+  color: white;
 
-  min-height: 42px;
-  max-height: 150px;
+  padding:
+    10px
+    11px;
 
-  padding: 10px;
+  font-family: inherit;
 
-  font-size: 14px;
+  font-size: 16px;
 
-  line-height: 1.5;
+  line-height: 1.55;
 }
+
 
 #message::placeholder {
-  color: #718096;
+  color: #758094;
 }
 
+
 .send-button {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
 
   border: none;
 
@@ -759,60 +912,80 @@ pre code {
 
   color: white;
 
-  cursor: pointer;
+  font-size: 18px;
 
-  font-size: 16px;
+  cursor: pointer;
 
   transition: .15s;
 }
 
+
 .send-button:hover {
-  background: var(--blue2);
-  transform: translateY(-1px);
+  background: var(--blue-hover);
+
+  transform:
+    translateY(-1px);
 }
+
 
 .send-button:disabled {
   opacity: .5;
+
   cursor: not-allowed;
+
   transform: none;
 }
+
 
 .stop-button {
   display: none;
 
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
 
   border: none;
 
   border-radius: 11px;
 
-  background: #334155;
+  background: #374151;
 
   color: white;
 
   cursor: pointer;
 }
 
+
 .input-footer {
   display: flex;
 
-  justify-content: space-between;
-
   align-items: center;
 
-  padding: 0 12px 8px;
+  justify-content: space-between;
 
-  color: var(--muted);
+  padding:
+    0
+    13px
+    9px;
 
-  font-size: 10px;
+  color: #758094;
+
+  font-size: 11px;
 }
+
 
 .char-count {
-  opacity: .7;
+  opacity: .75;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu {
+  display: none;
+}
+
 
 @media (max-width: 750px) {
 
@@ -820,85 +993,75 @@ pre code {
     position: fixed;
 
     left: -280px;
+
     top: 0;
+
     bottom: 0;
 
-    z-index: 50;
+    z-index: 100;
 
     transition: .25s;
   }
+
 
   .sidebar.open {
     left: 0;
   }
 
+
   .mobile-menu {
     display: block;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
   }
 
-  .input-wrapper {
+
+  .input-area {
     left: 0;
+
+    padding:
+      10px
+      12px
+      14px;
   }
 
-  .topbar {
-    padding: 0 13px;
-  }
 
   .chat {
-    padding: 20px 13px 150px;
+    padding:
+      25px
+      14px
+      155px;
   }
+
 
   .welcome h1 {
     font-size: 29px;
   }
 
+
+  .welcome p {
+    font-size: 15px;
+  }
+
+
   .prompt-grid {
     grid-template-columns: 1fr;
   }
 
-}
 
-/* SEARCH */
+  .message-text,
+  .user-message .message-text {
+    font-size: 16px;
+  }
 
-.search-box {
-  display: none;
-
-  position: absolute;
-
-  top: 60px;
-  right: 15px;
-
-  width: 280px;
-
-  padding: 10px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 12px;
-
-  background: var(--panel);
-
-  z-index: 30;
-}
-
-.search-box.show {
-  display: block;
-}
-
-.search-box input {
-  width: 100%;
-
-  border: 1px solid var(--border);
-
-  background: var(--panel2);
-
-  color: var(--text);
-
-  border-radius: 8px;
-
-  padding: 9px;
-
-  outline: none;
 }
 
 </style>
@@ -909,9 +1072,15 @@ pre code {
 
 <div class="app">
 
-  <!-- SIDEBAR -->
 
-  <aside class="sidebar" id="sidebar">
+  <!-- =====================
+       SIDEBAR
+  ====================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
 
     <div class="brand">
 
@@ -919,52 +1088,80 @@ pre code {
         Z
       </div>
 
-      <div class="brand-text">
-        <strong>Zendrex AI</strong>
-        <span>Smart. Simple. Fast.</span>
+      <div>
+
+        <div class="brand-title">
+          Zendrex AI
+        </div>
+
+        <div class="brand-subtitle">
+          Smart. Simple. Fast.
+        </div>
+
       </div>
 
     </div>
 
 
-    <button class="new-chat" id="newChat">
+    <button
+      class="new-chat"
+      id="newChat"
+    >
       + New chat
     </button>
 
 
-    <div class="side-title">
+    <div class="sidebar-title">
       Quick prompts
     </div>
 
 
-    <div class="quick">
+    <button
+      class="quick-button"
+      data-prompt="Explain something to me simply"
+    >
+      Explain something
+    </button>
 
-      <button data-prompt="Explain something to me simply">
-        Explain something
-      </button>
 
-      <button data-prompt="Help me write something">
-        Help me write
-      </button>
+    <button
+      class="quick-button"
+      data-prompt="Help me write something"
+    >
+      Help me write
+    </button>
 
-      <button data-prompt="Help me with a coding problem">
-        Coding help
-      </button>
 
-      <button data-prompt="Give me some creative ideas">
-        Brainstorm ideas
-      </button>
+    <button
+      class="quick-button"
+      data-prompt="Help me with a coding problem"
+    >
+      Coding help
+    </button>
 
-    </div>
+
+    <button
+      class="quick-button"
+      data-prompt="Give me some creative ideas"
+    >
+      Brainstorm ideas
+    </button>
 
 
     <div class="sidebar-bottom">
 
-      <button class="side-button" id="exportChat">
+      <button
+        class="sidebar-button"
+        id="exportChat"
+      >
         ↓ Export chat
       </button>
 
-      <button class="side-button" id="clearChat">
+
+      <button
+        class="sidebar-button"
+        id="clearChat"
+      >
         🗑 Clear chat
       </button>
 
@@ -973,12 +1170,14 @@ pre code {
   </aside>
 
 
-  <!-- MAIN -->
+  <!-- =====================
+       MAIN
+  ====================== -->
 
   <main class="main">
 
 
-    <!-- TOPBAR -->
+    <!-- TOP BAR -->
 
     <header class="topbar">
 
@@ -993,7 +1192,7 @@ pre code {
 
         <span class="status-dot"></span>
 
-        <span class="status">
+        <span class="status-text">
           Zendrex AI
         </span>
 
@@ -1004,29 +1203,11 @@ pre code {
 
         <button
           class="icon-button"
-          id="searchButton"
-          title="Search chat"
-        >
-          ⌕
-        </button>
-
-        <button
-          class="icon-button"
           id="themeButton"
-          title="Change theme"
+          title="Theme"
         >
           ☼
         </button>
-
-      </div>
-
-
-      <div class="search-box" id="searchBox">
-
-        <input
-          id="searchInput"
-          placeholder="Search this chat..."
-        >
 
       </div>
 
@@ -1035,24 +1216,35 @@ pre code {
 
     <!-- CHAT -->
 
-    <section class="chat" id="chat">
+    <section
+      class="chat"
+      id="chat"
+    >
 
-      <div class="chat-inner" id="chatInner">
+      <div
+        class="chat-inner"
+        id="chatInner"
+      >
 
 
         <!-- WELCOME -->
 
-        <div class="welcome" id="welcome">
+        <div
+          class="welcome"
+          id="welcome"
+        >
 
-          <div class="welcome-box">
+          <div class="welcome-content">
 
             <div class="welcome-logo">
               Z
             </div>
 
+
             <h1>
               What can I help with?
             </h1>
+
 
             <p>
               Ask a question, write something,
@@ -1062,12 +1254,20 @@ pre code {
 
             <div class="prompt-grid">
 
+
               <button
                 class="prompt"
                 data-prompt="Explain artificial intelligence in simple words"
               >
-                <strong>Explain something</strong>
-                <span>Get a simple explanation</span>
+
+                <strong>
+                  Explain something
+                </strong>
+
+                <span>
+                  Get a simple explanation
+                </span>
+
               </button>
 
 
@@ -1075,8 +1275,15 @@ pre code {
                 class="prompt"
                 data-prompt="Give me some creative ideas for a website"
               >
-                <strong>Brainstorm</strong>
-                <span>Generate useful ideas</span>
+
+                <strong>
+                  Brainstorm
+                </strong>
+
+                <span>
+                  Generate useful ideas
+                </span>
+
               </button>
 
 
@@ -1084,8 +1291,15 @@ pre code {
                 class="prompt"
                 data-prompt="Help me write a professional message"
               >
-                <strong>Write something</strong>
-                <span>Messages, posts and more</span>
+
+                <strong>
+                  Write something
+                </strong>
+
+                <span>
+                  Messages, posts and more
+                </span>
+
               </button>
 
 
@@ -1093,9 +1307,17 @@ pre code {
                 class="prompt"
                 data-prompt="Help me debug my code"
               >
-                <strong>Code with me</strong>
-                <span>Build and debug code</span>
+
+                <strong>
+                  Code with me
+                </strong>
+
+                <span>
+                  Build and debug code
+                </span>
+
               </button>
+
 
             </div>
 
@@ -1110,7 +1332,7 @@ pre code {
 
     <!-- INPUT -->
 
-    <div class="input-wrapper">
+    <div class="input-area">
 
       <div class="input-box">
 
@@ -1148,8 +1370,8 @@ pre code {
           </span>
 
           <span
-            class="char-count"
             id="charCount"
+            class="char-count"
           >
             0
           </span>
@@ -1167,78 +1389,107 @@ pre code {
 
 <script>
 
+/* =========================
+   CONFIG
+========================= */
+
 const WORKER_URL =
   "https://steep-fog-986f.konanwork99.workers.dev";
 
 
+/* =========================
+   ELEMENTS
+========================= */
+
 const input =
-  document.getElementById("message");
+  document.getElementById(
+    "message"
+  );
 
 const send =
-  document.getElementById("send");
+  document.getElementById(
+    "send"
+  );
 
 const stopButton =
-  document.getElementById("stopButton");
+  document.getElementById(
+    "stopButton"
+  );
 
 const chat =
-  document.getElementById("chat");
+  document.getElementById(
+    "chat"
+  );
 
 const chatInner =
-  document.getElementById("chatInner");
+  document.getElementById(
+    "chatInner"
+  );
 
 const welcome =
-  document.getElementById("welcome");
+  document.getElementById(
+    "welcome"
+  );
 
 const charCount =
-  document.getElementById("charCount");
+  document.getElementById(
+    "charCount"
+  );
 
 const sidebar =
-  document.getElementById("sidebar");
+  document.getElementById(
+    "sidebar"
+  );
 
 
-let currentController = null;
+let controller = null;
 
 let conversation = [];
 
 
 /* =========================
-   LOCAL STORAGE
+   STORAGE
 ========================= */
 
-function saveChat() {
+function saveConversation() {
 
   localStorage.setItem(
-    "zendrex_chat",
-    JSON.stringify(conversation)
+    "zendrex_conversation",
+    JSON.stringify(
+      conversation
+    )
   );
 
 }
 
 
-function loadChat() {
+function loadConversation() {
 
   try {
 
     const saved =
       JSON.parse(
         localStorage.getItem(
-          "zendrex_chat"
+          "zendrex_conversation"
         )
       );
 
+
     if (
       Array.isArray(saved) &&
-      saved.length
+      saved.length > 0
     ) {
 
-      conversation = saved;
+      conversation =
+        saved;
 
       welcome.style.display =
         "none";
 
-      conversation.forEach(item => {
 
-        addMessageToUI(
+      saved.forEach(item => {
+
+        createMessage(
           item.role,
           item.content,
           false
@@ -1264,22 +1515,27 @@ function loadChat() {
 async function copyText(
   text,
   button,
-  normalText
+  original
 ) {
 
   try {
 
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(
+      text
+    );
+
 
     button.textContent =
       "Copied!";
 
+
     setTimeout(() => {
 
       button.textContent =
-        normalText;
+        original;
 
     }, 1200);
+
 
   } catch {
 
@@ -1292,11 +1548,11 @@ async function copyText(
 
 
 /* =========================
-   CODE RENDERING
+   RENDER ANSWER
 ========================= */
 
-function renderContent(
-  container,
+function renderAnswer(
+  element,
   text
 ) {
 
@@ -1307,31 +1563,41 @@ function renderContent(
   parts.forEach(
     (part, index) => {
 
-      if (index % 2 === 0) {
+      /* NORMAL TEXT */
 
-        if (part.trim()) {
+      if (
+        index % 2 === 0
+      ) {
+
+        if (
+          part.trim()
+        ) {
 
           const normal =
             document.createElement(
               "div"
             );
 
+
           normal.textContent =
             part.trim();
 
-          container.appendChild(
+
+          element.appendChild(
             normal
           );
 
         }
 
         return;
-
       }
 
 
+      /* CODE */
+
       let code =
         part.trim();
+
 
       let language =
         "code";
@@ -1366,24 +1632,24 @@ function renderContent(
         "code-box";
 
 
-      const head =
+      const header =
         document.createElement(
           "div"
         );
 
-      head.className =
-        "code-head";
+      header.className =
+        "code-header";
 
 
-      const lang =
+      const languageText =
         document.createElement(
           "span"
         );
 
-      lang.className =
-        "code-lang";
+      languageText.className =
+        "code-language";
 
-      lang.textContent =
+      languageText.textContent =
         language;
 
 
@@ -1399,19 +1665,25 @@ function renderContent(
         "Copy code";
 
 
-      copy.onclick = () => {
+      copy.onclick =
+        () => {
 
-        copyText(
-          code,
-          copy,
-          "Copy code"
-        );
+          copyText(
+            code,
+            copy,
+            "Copy code"
+          );
 
-      };
+        };
 
 
-      head.appendChild(lang);
-      head.appendChild(copy);
+      header.appendChild(
+        languageText
+      );
+
+      header.appendChild(
+        copy
+      );
 
 
       const pre =
@@ -1435,11 +1707,18 @@ function renderContent(
       );
 
 
-      box.appendChild(head);
-      box.appendChild(pre);
+      box.appendChild(
+        header
+      );
+
+      box.appendChild(
+        pre
+      );
 
 
-      container.appendChild(box);
+      element.appendChild(
+        box
+      );
 
     }
   );
@@ -1448,10 +1727,10 @@ function renderContent(
 
 
 /* =========================
-   ADD MESSAGE
+   CREATE MESSAGE
 ========================= */
 
-function addMessageToUI(
+function createMessage(
   role,
   text,
   save = true
@@ -1461,6 +1740,7 @@ function addMessageToUI(
     document.createElement(
       "div"
     );
+
 
   message.className =
     "message " +
@@ -1476,6 +1756,7 @@ function addMessageToUI(
       "div"
     );
 
+
   avatar.className =
     "avatar " +
     (
@@ -1483,6 +1764,7 @@ function addMessageToUI(
         ? "user-avatar"
         : "ai-avatar"
     );
+
 
   avatar.textContent =
     role === "user"
@@ -1495,6 +1777,7 @@ function addMessageToUI(
       "div"
     );
 
+
   content.className =
     "message-content";
 
@@ -1504,8 +1787,10 @@ function addMessageToUI(
       "div"
     );
 
+
   name.className =
     "message-name";
+
 
   name.textContent =
     role === "user"
@@ -1513,42 +1798,53 @@ function addMessageToUI(
       : "Zendrex AI";
 
 
-  const textElement =
+  const messageText =
     document.createElement(
       "div"
     );
 
-  textElement.className =
+
+  messageText.className =
     "message-text";
 
 
-  if (role === "user") {
+  if (
+    role === "user"
+  ) {
 
-    textElement.textContent =
+    messageText.textContent =
       text;
 
   } else {
 
-    renderContent(
-      textElement,
+    renderAnswer(
+      messageText,
       text
     );
 
   }
 
 
-  content.appendChild(name);
-  content.appendChild(textElement);
+  content.appendChild(
+    name
+  );
+
+  content.appendChild(
+    messageText
+  );
 
 
   /* AI ACTIONS */
 
-  if (role === "assistant") {
+  if (
+    role === "assistant"
+  ) {
 
     const actions =
       document.createElement(
         "div"
       );
+
 
     actions.className =
       "message-actions";
@@ -1559,6 +1855,7 @@ function addMessageToUI(
         "button"
       );
 
+
     copy.className =
       "message-action";
 
@@ -1566,59 +1863,53 @@ function addMessageToUI(
       "Copy";
 
 
-    copy.onclick = () => {
+    copy.onclick =
+      () => {
 
-      copyText(
-        text,
-        copy,
-        "Copy"
-      );
+        copyText(
+          text,
+          copy,
+          "Copy"
+        );
 
-    };
-
-
-    const regenerate =
-      document.createElement(
-        "button"
-      );
-
-    regenerate.className =
-      "message-action";
-
-    regenerate.textContent =
-      "Regenerate";
+      };
 
 
-    regenerate.onclick = () => {
-
-      regenerateLast();
-
-    };
+    actions.appendChild(
+      copy
+    );
 
 
-    actions.appendChild(copy);
-    actions.appendChild(regenerate);
-
-    content.appendChild(actions);
+    content.appendChild(
+      actions
+    );
 
   }
 
 
-  message.appendChild(avatar);
-  message.appendChild(content);
+  message.appendChild(
+    avatar
+  );
+
+  message.appendChild(
+    content
+  );
 
 
-  chatInner.appendChild(message);
+  chatInner.appendChild(
+    message
+  );
 
 
   if (save) {
 
     conversation.push({
-      role,
+      role: role,
       content: text
     });
 
-    saveChat();
+
+    saveConversation();
 
   }
 
@@ -1640,6 +1931,7 @@ function createThinking() {
       "div"
     );
 
+
   message.className =
     "message ai-message";
 
@@ -1649,8 +1941,10 @@ function createThinking() {
       "div"
     );
 
+
   avatar.className =
     "avatar ai-avatar";
+
 
   avatar.textContent =
     "Z";
@@ -1661,6 +1955,7 @@ function createThinking() {
       "div"
     );
 
+
   content.className =
     "message-content";
 
@@ -1670,8 +1965,10 @@ function createThinking() {
       "div"
     );
 
+
   name.className =
     "message-name";
+
 
   name.textContent =
     "Zendrex AI";
@@ -1682,22 +1979,37 @@ function createThinking() {
       "div"
     );
 
+
   thinking.className =
     "thinking";
+
 
   thinking.innerHTML =
     "<span></span><span></span><span></span>";
 
 
-  content.appendChild(name);
-  content.appendChild(thinking);
+  content.appendChild(
+    name
+  );
+
+  content.appendChild(
+    thinking
+  );
 
 
-  message.appendChild(avatar);
-  message.appendChild(content);
+  message.appendChild(
+    avatar
+  );
+
+  message.appendChild(
+    content
+  );
 
 
-  chatInner.appendChild(message);
+  chatInner.appendChild(
+    message
+  );
+
 
   chat.scrollTop =
     chat.scrollHeight;
@@ -1709,7 +2021,7 @@ function createThinking() {
 
 
 /* =========================
-   SEND
+   SEND MESSAGE
 ========================= */
 
 async function sendMessage(
@@ -1722,8 +2034,13 @@ async function sendMessage(
       : input.value.trim();
 
 
-  if (!text || currentController) {
+  if (
+    !text ||
+    controller
+  ) {
+
     return;
+
   }
 
 
@@ -1736,7 +2053,7 @@ async function sendMessage(
   updateCounter();
 
 
-  addMessageToUI(
+  createMessage(
     "user",
     text
   );
@@ -1749,11 +2066,12 @@ async function sendMessage(
   send.style.display =
     "none";
 
+
   stopButton.style.display =
     "block";
 
 
-  currentController =
+  controller =
     new AbortController();
 
 
@@ -1776,7 +2094,7 @@ async function sendMessage(
           }),
 
           signal:
-            currentController.signal
+            controller.signal
 
         }
       );
@@ -1786,7 +2104,9 @@ async function sendMessage(
       await response.json();
 
 
-    if (!response.ok) {
+    if (
+      !response.ok
+    ) {
 
       throw new Error(
         data.error ||
@@ -1804,7 +2124,7 @@ async function sendMessage(
       "I couldn't generate an answer.";
 
 
-    addMessageToUI(
+    createMessage(
       "assistant",
       answer
     );
@@ -1820,7 +2140,7 @@ async function sendMessage(
       "AbortError"
     ) {
 
-      addMessageToUI(
+      createMessage(
         "assistant",
         "Sorry, Zendrex AI could not connect to the AI server."
       );
@@ -1829,14 +2149,17 @@ async function sendMessage(
 
   } finally {
 
-    currentController =
+    controller =
       null;
+
 
     send.style.display =
       "block";
 
+
     stopButton.style.display =
       "none";
+
 
     input.focus();
 
@@ -1849,23 +2172,26 @@ async function sendMessage(
    STOP
 ========================= */
 
-stopButton.onclick = () => {
+stopButton.onclick =
+  () => {
 
-  if (currentController) {
+    if (controller) {
 
-    currentController.abort();
+      controller.abort();
 
-    currentController = null;
+      controller = null;
 
-  }
+    }
 
-  send.style.display =
-    "block";
 
-  stopButton.style.display =
-    "none";
+    send.style.display =
+      "block";
 
-};
+
+    stopButton.style.display =
+      "none";
+
+  };
 
 
 /* =========================
@@ -1910,7 +2236,7 @@ input.addEventListener(
 
 
 /* =========================
-   BUTTON
+   SEND BUTTON
 ========================= */
 
 send.onclick =
@@ -1927,22 +2253,17 @@ document
   )
   .forEach(button => {
 
-    button.addEventListener(
-      "click",
+    button.onclick =
       () => {
 
-        const prompt =
-          button.dataset.prompt;
-
         input.value =
-          prompt;
+          button.dataset.prompt;
 
         updateCounter();
 
         input.focus();
 
-      }
-    );
+      };
 
   });
 
@@ -1952,16 +2273,31 @@ document
 ========================= */
 
 document
-  .getElementById("newChat")
-  .onclick = () => {
+  .getElementById(
+    "newChat"
+  )
+  .onclick =
+  () => {
 
     conversation = [];
 
     localStorage.removeItem(
-      "zendrex_chat"
+      "zendrex_conversation"
     );
 
-    location.reload();
+
+    document
+      .querySelectorAll(
+        ".message"
+      )
+      .forEach(
+        element =>
+          element.remove()
+      );
+
+
+    welcome.style.display =
+      "flex";
 
   };
 
@@ -1971,20 +2307,16 @@ document
 ========================= */
 
 document
-  .getElementById("clearChat")
-  .onclick = () => {
-
-    if (
-      !conversation.length
-    ) {
-      return;
-    }
-
+  .getElementById(
+    "clearChat"
+  )
+  .onclick =
+  () => {
 
     conversation = [];
 
     localStorage.removeItem(
-      "zendrex_chat"
+      "zendrex_conversation"
     );
 
 
@@ -2009,37 +2341,17 @@ document
 ========================= */
 
 document
-  .getElementById("themeButton")
-  .onclick = () => {
+  .getElementById(
+    "themeButton"
+  )
+  .onclick =
+  () => {
 
     document.body.classList.toggle(
       "light"
     );
 
-
-    localStorage.setItem(
-      "zendrex_theme",
-      document.body.classList.contains(
-        "light"
-      )
-        ? "light"
-        : "dark"
-    );
-
   };
-
-
-if (
-  localStorage.getItem(
-    "zendrex_theme"
-  ) === "light"
-) {
-
-  document.body.classList.add(
-    "light"
-  );
-
-}
 
 
 /* =========================
@@ -2047,95 +2359,19 @@ if (
 ========================= */
 
 document
-  .getElementById("mobileMenu")
-  .onclick = () => {
+  .getElementById(
+    "mobileMenu"
+  )
+  ?.addEventListener(
+    "click",
+    () => {
 
-    sidebar.classList.toggle(
-      "open"
-    );
+      sidebar.classList.toggle(
+        "open"
+      );
 
-  };
-
-
-/* =========================
-   SEARCH
-========================= */
-
-const searchButton =
-  document.getElementById(
-    "searchButton"
+    }
   );
-
-const searchBox =
-  document.getElementById(
-    "searchBox"
-  );
-
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
-
-searchButton.onclick = () => {
-
-  searchBox.classList.toggle(
-    "show"
-  );
-
-  if (
-    searchBox.classList.contains(
-      "show"
-    )
-  ) {
-
-    searchInput.focus();
-
-  }
-
-};
-
-
-searchInput.addEventListener(
-  "input",
-  () => {
-
-    const query =
-      searchInput.value
-        .toLowerCase()
-        .trim();
-
-
-    document
-      .querySelectorAll(
-        ".message"
-      )
-      .forEach(message => {
-
-        if (!query) {
-
-          message.style.display =
-            "";
-
-          return;
-
-        }
-
-
-        const text =
-          message.textContent
-            .toLowerCase();
-
-
-        message.style.display =
-          text.includes(query)
-            ? ""
-            : "none";
-
-      });
-
-  }
-);
 
 
 /* =========================
@@ -2143,13 +2379,18 @@ searchInput.addEventListener(
 ========================= */
 
 document
-  .getElementById("exportChat")
-  .onclick = () => {
+  .getElementById(
+    "exportChat"
+  )
+  .onclick =
+  () => {
 
     if (
-      !conversation.length
+      conversation.length === 0
     ) {
+
       return;
+
     }
 
 
@@ -2168,11 +2409,14 @@ document
             item.role === "user"
               ? "YOU"
               : "ZENDREX AI"
-          ) +
-          ":\n";
+          );
+
+        output += ":\n";
 
         output +=
-          item.content +
+          item.content;
+
+        output +=
           "\n\n";
 
       }
@@ -2200,11 +2444,13 @@ document
         "a"
       );
 
+
     link.href =
       url;
 
     link.download =
       "zendrex-chat.txt";
+
 
     link.click();
 
@@ -2217,51 +2463,10 @@ document
 
 
 /* =========================
-   REGENERATE
-========================= */
-
-function regenerateLast() {
-
-  if (
-    currentController
-  ) {
-    return;
-  }
-
-
-  if (
-    conversation.length < 2
-  ) {
-    return;
-  }
-
-
-  const lastUser =
-    [...conversation]
-      .reverse()
-      .find(
-        item =>
-          item.role === "user"
-      );
-
-
-  if (!lastUser) {
-    return;
-  }
-
-
-  sendMessage(
-    lastUser.content
-  );
-
-}
-
-
-/* =========================
    LOAD
 ========================= */
 
-loadChat();
+loadConversation();
 
 input.focus();
 
